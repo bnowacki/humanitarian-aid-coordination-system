@@ -1,0 +1,75 @@
+{
+  "home": {
+    "title": "Witaj w HACS!"
+  },
+  "auth": {
+    "sign-up": "Zarejestruj się",
+    "magic-link-helper-text": "Link do rejestracji zostanie wysłany na ten e-mail. \nPo kliknięciu zostaniesz zalogowany do systemu.",
+    "full-name": "Imię i nazwisko",
+    "name-surname": "Imię Nazwisko",
+    "magic-link-error": "Nie udało się wysłać linku do logowania",
+    "send-link": "Wyślij link",
+    "sign-up-error": "Nie udało się zarejestrować",
+    "password": "Hasło",
+    "confirm-password": "Powtórz hasło",
+    "sign-in-error": "Nie udało się zalogować",
+    "magic-link": "Magic link",
+    "already-have-an-account": "Masz już konto?",
+    "new-here": "Nowy tutaj?",
+    "sign-out": "Wyloguj się",
+    "sign-in": "Zaloguj się",
+    "or-continue-with": "lub kontynuuj z"
+  },
+  "copy-to-clipboard": {
+    "failed-to-copy-link": "Nie udało się skopiować tekstu"
+  },
+  "table": {
+    "search": "Wpisz...",
+    "from": "Od",
+    "to": "Do",
+    "all": "Wszystkie",
+    "display": "Wyświetlaj",
+    "columns-select": "Wybierz wyświetlane kolumny",
+    "deselect-all": "Odznacz wszystkie",
+    "select-all": "Zaznacz wszystkie"
+  },
+  "admin": {
+    "users": {
+      "full-name": "Imię i nazwisko",
+      "role": "Rola",
+      "created-at": "Data rejestracji",
+      "invited-at": "Zaproszono",
+      "last-sign-in-at": "Ostatnie logowanie",
+      "title": "Użytkownicy",
+      "editor-title": "Edytuj użytkownika",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "role-basic": "Podstawowy",
+      "role-admin": "Administrator",
+      "no-results": "Brak wyników",
+      "no-results-description": "Brak użytkowników odpowiadających wybranym filtrom",
+      "clear-filters": "Wyczyść filtry"
+    },
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "users": "Użytkownicy",
+      "home": "Strona główna",
+      "governments": "Rządy",
+      "aid-organizations": "Organizacje charytatywne"
+    }
+  },
+  "pagination": {
+    "from": "z"
+  },
+  "editor-dialog": {
+    "cancel": "Anuluj",
+    "save": "Zapisz"
+  },
+  "delete-resource-dialog": {
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "title": "Potwierdź operacje",
+    "error-toast": "Nie udało się usunąć zasobu",
+    "success-toast": "Zasób został usunięty"
+  }
+}

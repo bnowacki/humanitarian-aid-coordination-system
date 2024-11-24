@@ -1,0 +1,75 @@
+{
+  "home": {
+    "title": "Welcome to HACS!"
+  },
+  "auth": {
+    "sign-up": "Sign up",
+    "magic-link-helper-text": "A sign up link will be send to this email. Upon clicking it, you will be logged into the system.",
+    "full-name": "Full name",
+    "name-surname": "Name Surname",
+    "magic-link-error": "Failed to send magic link",
+    "send-link": "Send link",
+    "sign-up-error": "Failed to sign up",
+    "password": "Password",
+    "confirm-password": "Confirm password",
+    "sign-in-error": "Failed to sign in",
+    "sign-in": "Sign in",
+    "magic-link": "Magic link",
+    "already-have-an-account": "Already have an account?",
+    "new-here": "New here?",
+    "sign-out": "Sign out",
+    "or-continue-with": "or continue with"
+  },
+  "copy-to-clipboard": {
+    "failed-to-copy-link": "Failed to copy text"
+  },
+  "table": {
+    "search": "Search...",
+    "from": "From",
+    "to": "To",
+    "all": "All",
+    "display": "Display",
+    "columns-select": "Select displayed columns",
+    "deselect-all": "Deselect all",
+    "select-all": "Select all"
+  },
+  "admin": {
+    "users": {
+      "full-name": "Full name",
+      "role": "Role",
+      "created-at": "Registered at",
+      "invited-at": "Invited at",
+      "last-sign-in-at": "Last sign in at",
+      "title": "Users",
+      "editor-title": "Edit user",
+      "edit": "Edit",
+      "delete": "Delete",
+      "role-basic": "Basic",
+      "role-admin": "Admin",
+      "no-results": "No results found",
+      "no-results-description": "There are no users matching the selected filters",
+      "clear-filters": "Clear filters"
+    },
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "users": "Users",
+      "home": "Home",
+      "governments": "Governments",
+      "aid-organizations": "Aid Organizations"
+    }
+  },
+  "pagination": {
+    "from": "from"
+  },
+  "editor-dialog": {
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+  "delete-resource-dialog": {
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "title": "Are you sure?",
+    "error-toast": "Failed to delete resource",
+    "success-toast": "Resource has been deleted"
+  }
+}

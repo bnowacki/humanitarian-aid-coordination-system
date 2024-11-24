@@ -1,0 +1,30 @@
+.TBody {
+  .Row {
+    border-radius: 12px;
+    outline-offset: -2px;
+
+    &:hover {
+      outline: 1px solid $orange-500;
+    }
+
+    &.Clickable {
+      cursor: pointer;
+    }
+
+    td {
+      padding-block: 18px;
+      padding-inline: 12px;
+
+      font-size: 14px;
+      font-weight: 400;
+
+      &:first-child {
+        padding-left: 18px;
+      }
+
+      &:last-child {
+        padding-right: 18px;
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+.Container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: $gray-900;
+
+  .From {
+    color: $gray-700;
+  }
+}
+
+.Button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  cursor: pointer;
+
+  color: $orange-500;
+  background-color: transparent;
+  padding: 8px;
+  aspect-ratio: 1;
+
+  @include transition(background-color, color);
+
+  &.Disabled {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.5;
+    color: $gray-light-500;
+  }
+
+  &:hover {
+    background-color: $gray-light-100;
+  }
+
+  &:active {
+    background-color: $gray-light-200;
+  }
+}
+
+.Input {
+  border-radius: $border-radius-full;
+  box-shadow: 0 0 21px 0 rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background: $white;
+  outline: none;
+  border: none;
+  font-size: $font-body-small;
+  height: 32px;
+  width: 32px;
+  min-width: 32px;
+  max-width: 8px;
+  padding-inline: 8px;
+
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[type='number'] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+  }
+}

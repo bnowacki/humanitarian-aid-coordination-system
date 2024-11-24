@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "dbmate": "^2.23.0",
+    "supabase": "^1.223.10"
+  }
+}

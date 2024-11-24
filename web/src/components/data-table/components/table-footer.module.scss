@@ -1,0 +1,45 @@
+.Container {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 48px;
+  gap: 16px;
+
+  @include media($from: 'sm') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media($from: 'md') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.DisplayControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  @include media($from: 'sm') {
+    justify-content: flex-start;
+  }
+
+  .Label {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 !important;
+    font-size: $font-body-small;
+  }
+}
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+
+  @include media($from: 'sm') {
+    justify-content: flex-end;
+  }
+
+  @include media($from: 'md') {
+    justify-content: center;
+  }
+}
