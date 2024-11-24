@@ -1,20 +1,28 @@
 'use client'
 
+import { useCallback } from 'react'
+
 import { Stack } from '@chakra-ui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import { useAuth } from '@/components/auth-context'
 import { Form } from '@/components/form/form'
 import { FormInput } from '@/components/form/input'
 import { Button } from '@/components/ui/button'
 import useLoadingState from '@/hooks/use-loading-state'
+import { useRouter } from '@/i18n/navigation'
 
 import { signUp } from '../actions'
 import { SignUpInput, signUpSchema } from '../schemas'
 
 export default function SignUpPassword() {
   const t = useTranslations('auth')
+
+  const router = useRouter()
+
+  const { fetchProfile } = useAuth()
 
   const form = useForm<SignUpInput>({
     resolver: zodResolver(signUpSchema),
@@ -27,10 +35,17 @@ export default function SignUpPassword() {
   })
 
   const [onSubmit, submitting] = useLoadingState<SubmitHandler<SignUpInput>>(
-    async data => {
-      const res = await signUp(data)
-      if (res?.error) throw res.error
-    },
+    useCallback(
+      async data => {
+        const res = await signUp(data)
+        if (res && 'error' in res && res?.error) throw res.error
+        if (res && 'session' in res && !!res.session) {
+          await fetchProfile()
+        }
+        router.replace('/')
+      },
+      [fetchProfile, router]
+    ),
     {
       onErrorToast: t('sign-up-error'),
     }

@@ -71,5 +71,11 @@
     "title": "Are you sure?",
     "error-toast": "Failed to delete resource",
     "success-toast": "Resource has been deleted"
+  },
+  "header": {
+    "sign-in": "Sign in",
+    "sign-up": "Sign up",
+    "admin-panel": "Admin panel",
+    "sign-out": "Sign out"
   }
 }

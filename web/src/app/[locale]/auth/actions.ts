@@ -1,6 +1,7 @@
 'use server'
 
 import { getLocale } from 'next-intl/server'
+import { revalidatePath } from 'next/cache'
 import { headers } from 'next/headers'
 
 import { redirect } from '@/i18n/navigation'
@@ -17,7 +18,7 @@ export const signUp = async (input: SignUpInput) => {
   const origin = headers().get('origin')
   const supabase = createClient()
 
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email: input.email,
     password: input.password,
     options: {
@@ -28,9 +29,8 @@ export const signUp = async (input: SignUpInput) => {
     },
   })
   if (error) throw error
-  const locale = await getLocale()
 
-  redirect({ href: '/auth/sign-in?message=Check email to continue sign in process', locale })
+  return data
 }
 
 export const signIn = async (input: SignInInput) => {
@@ -49,5 +49,6 @@ export const signIn = async (input: SignInInput) => {
 
   const locale = await getLocale()
 
+  revalidatePath('/', 'layout')
   redirect({ href: '/', locale })
 }

@@ -29,7 +29,7 @@ export default function AuthForm({ title, linkForm, passwordForm, disabled }: Pr
 
   const [tab, setTab] = useQueryState(
     'tab',
-    parseAsStringEnum<AuthTab>(Object.values(AuthTab)).withDefault(AuthTab.link)
+    parseAsStringEnum<AuthTab>(Object.values(AuthTab)).withDefault(AuthTab.password)
   )
   const pathname = usePathname()
   const isSignUp = useMemo(() => pathname.includes('sign-up'), [pathname])
@@ -39,15 +39,15 @@ export default function AuthForm({ title, linkForm, passwordForm, disabled }: Pr
       <Heading textAlign="center">{title}</Heading>
       <Tabs.Root value={tab} onValueChange={e => setTab(e.value as AuthTab)} fitted variant="plain">
         <Tabs.List bg="bg.muted" rounded="l3" p="1">
-          <Tabs.Trigger value="link">{t('magic-link')}</Tabs.Trigger>
           <Tabs.Trigger value="password">{t('password')}</Tabs.Trigger>
+          <Tabs.Trigger value="link">{t('magic-link')}</Tabs.Trigger>
           <Tabs.Indicator rounded="l2" />
         </Tabs.List>
-        <Tabs.Content value="link" display="flex" flexDirection="column" gap={8}>
-          {linkForm}
-        </Tabs.Content>
         <Tabs.Content value="password" display="flex" flexDirection="column" gap={8}>
           {passwordForm}
+        </Tabs.Content>
+        <Tabs.Content value="link" display="flex" flexDirection="column" gap={8}>
+          {linkForm}
         </Tabs.Content>
       </Tabs.Root>
       <Stack gap={4}>

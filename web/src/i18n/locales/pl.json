@@ -71,5 +71,11 @@
     "title": "Potwierdź operacje",
     "error-toast": "Nie udało się usunąć zasobu",
     "success-toast": "Zasób został usunięty"
+  },
+  "header": {
+    "sign-in": "Zaloguj się",
+    "sign-up": "Zarejestruj się",
+    "admin-panel": "Panel administratora",
+    "sign-out": "Wyloguj się"
   }
 }

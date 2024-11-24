@@ -106,3 +106,5 @@ Please use `kebab-case` for key names, try to keep the key names short and use s
 
 I highly recommend installing [i18n Ally](https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally) VS Code extension to make managing the translation keys more efficient.
 It is already configured to work with `next-intl` in `.vscode/i18n-ally-custom-framework.yml`.
+
+Please use export from `@/i18n/navigation` insted of `next/navigation`.

@@ -1,10 +1,13 @@
 'use client'
 
+import { useCallback } from 'react'
+
 import { Stack } from '@chakra-ui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import { useAuth } from '@/components/auth-context'
 import { Form } from '@/components/form/form'
 import { FormInput } from '@/components/form/input'
 import { Button } from '@/components/ui/button'
@@ -16,6 +19,8 @@ import { SignInInput, signInSchema } from '../schemas'
 export default function SignInPassword() {
   const t = useTranslations('auth')
 
+  const { fetchProfile } = useAuth()
+
   const form = useForm<SignInInput>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -25,13 +30,17 @@ export default function SignInPassword() {
   })
 
   const [onSubmit, submitting] = useLoadingState<SubmitHandler<SignInInput>>(
-    async data => {
-      const res = await signIn(data)
-      if (res?.error) {
-        console.error(res.error)
-        throw new Error('failed server-side validation')
-      }
-    },
+    useCallback(
+      async data => {
+        const res = await signIn(data)
+        if (res?.error) {
+          console.error(res.error)
+          throw new Error('failed server-side validation')
+        }
+        await fetchProfile()
+      },
+      [fetchProfile]
+    ),
     {
       onErrorToast: t('sign-in-error'),
     }

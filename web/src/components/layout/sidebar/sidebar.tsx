@@ -35,7 +35,7 @@ type Props = {
 
 export default function Sidebar({ items, itemsBottom }: Props) {
   return (
-    <Stack as="nav" p={2} h="100dvh" w={64} bg="gray.300">
+    <Stack as="nav" p={2} w={64} bg="gray.300">
       {items.map((item, i) => (
         <SidebarButton key={i} item={item} />
       ))}

@@ -11,6 +11,7 @@ type AuthContextType = {
   profile: UserProfile | null
   loading: boolean
   isAdmin: boolean
+  fetchProfile: () => Promise<void>
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -22,7 +23,7 @@ export interface Props {
 export const AuthContextProvider = (props: Props) => {
   const [profile, setProfile] = useState<UserProfile | null>(null)
 
-  const [getProfile, profileLoading] = useLoadingState(
+  const [fetchProfile, profileLoading] = useLoadingState(
     useCallback(async () => {
       const supabase = createClient()
 
@@ -49,7 +50,7 @@ export const AuthContextProvider = (props: Props) => {
       }
 
       if (event === 'SIGNED_IN') {
-        getProfile()
+        fetchProfile()
         return
       }
     })
@@ -65,6 +66,7 @@ export const AuthContextProvider = (props: Props) => {
         profile,
         isAdmin: !!profile && profile?.role === 'admin',
         loading: profileLoading,
+        fetchProfile: fetchProfile,
       }}
       {...props}
     />

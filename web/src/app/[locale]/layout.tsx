@@ -8,6 +8,7 @@ import NextTopLoader from 'nextjs-toploader'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
 import Footer from '@/components/layout/footer'
+import Header from '@/components/layout/header'
 import { Providers } from '@/components/providers'
 import { Toaster } from '@/components/ui/toaster'
 import { routing } from '@/i18n/navigation'
@@ -43,11 +44,12 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={fontSans.variable}>
-        <NextTopLoader color="#fff" height={3} shadow={`0 0 5px #fff`} showSpinner={false} />
+        <NextTopLoader color="#16a34a" height={5} shadow={`0 0 5px #fff`} showSpinner={false} />
         <Providers>
           <NuqsAdapter>
             <NextIntlClientProvider messages={messages}>
               <Flex minH="100dvh" flexDirection="column" bg="bg">
+                <Header />
                 {children}
                 <Footer />
               </Flex>

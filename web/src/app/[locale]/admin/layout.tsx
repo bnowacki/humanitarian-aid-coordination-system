@@ -21,7 +21,7 @@ export default async function AdminLayout({
   }
 
   return (
-    <Flex w="full" gap={4}>
+    <Flex w="full" gap={4} flex={1}>
       <AdminSidebar />
       <Box p={4} flex={1}>
         {children}
