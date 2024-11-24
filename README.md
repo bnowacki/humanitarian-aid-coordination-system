@@ -40,6 +40,10 @@ make migrate DB_URI=postgresql://postgres:postgres@127.0.0.1:54322/postgres
 
 ### Start frontend
 
+Requirements
+
+- [node.js](https://nodejs.org/en) 20 or later
+
 ```bash
 cd web
 
