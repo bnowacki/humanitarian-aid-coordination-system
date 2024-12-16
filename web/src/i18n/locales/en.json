@@ -77,5 +77,41 @@
     "sign-up": "Sign up",
     "admin-panel": "Admin panel",
     "sign-out": "Sign out"
+  },
+  "event": {
+    "table-of-events": "Table of events",
+    "title": "Title",
+    "event-title": "Event Title",
+    "location": "Location",
+    "event-location": "Event Location",
+    "status": "Status",
+    "description": "Description",
+    "event-description": "Event Description",
+    "add-event": "Add Event",
+    "add-new-event": "Add a new Event",
+    "edit": "edit",
+    "update-event": "Update Event",
+    "delete-event": "Delete Event",
+    "edit-event": "Edit Event",
+    "actions": "Actions",
+    "requests":"Requests"
+  },
+  "request": {
+    "create-request":"Create request",
+    "request-type":"Request type",
+    "resource":"Resource request",
+    "help":"Request Help",
+    "name":"Name",
+    "request-name":"Request Name",
+    "description":"Description",
+    "request-description":"Request Description",
+    "quantity":"Quantity",
+    "resource-quantity":"Resource Quantity",
+    "view-requests":"View Requests",
+    "no-requests":"No requests to display",
+    "requests-for-event":"Requests made for this event",
+    "status": "Status",
+    "help-requests": "Help Requests",
+    "resource-requests": "Resource Requests"
   }
 }
