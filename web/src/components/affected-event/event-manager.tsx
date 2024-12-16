@@ -52,6 +52,10 @@ export default function EventManager() {
     setSelectedRequestsEventId(null)
   }
 
+  const closeEditDialog = () => {
+    setSelectedEventId(null)
+  }
+
   return (
     <Box overflowY="auto">
       <Heading>{t('table-of-events')}</Heading>
@@ -109,10 +113,11 @@ export default function EventManager() {
         </Table.Root>
       )}
       {/* Render EditEventDialog if selectedEventId is not null */}
-      {selectedEventId && !selectedRequestsEventId && (
+      {selectedEventId && (
         <EditEventDialog
           eventId={selectedEventId}
           onEventUpdated={handleEventUpdated} // Pass the update handler to refresh the events
+          onClose={closeEditDialog}
         />
       )}
     </Box>

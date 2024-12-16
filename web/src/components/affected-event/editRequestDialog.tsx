@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 
-import { Input } from '@chakra-ui/react'
 import { useTranslations } from 'next-intl'
 import { Controller, useForm } from 'react-hook-form'
 
@@ -21,7 +20,15 @@ import { createClient } from '@/lib/supabase/client'
 
 const statuses = ['pending', 'approved', 'rejected']
 
-const EditRequestDialog = ({ requestId, onClose }: { requestId: string; onClose: () => void }) => {
+const EditRequestDialog = ({
+  requestId,
+  onClose,
+  onnUpdate,
+}: {
+  requestId: string
+  onClose: () => void
+  onnUpdate: () => void
+}) => {
   const t = useTranslations('request')
   const { control, handleSubmit, reset } = useForm()
   const [loading, setLoading] = useState(false)
@@ -84,13 +91,12 @@ const EditRequestDialog = ({ requestId, onClose }: { requestId: string; onClose:
         .from(requestType)
         .update({
           status: data.status,
-          description: data.description,
-          quantity: data.quantity,
         })
         .eq('id', requestId)
 
       if (error) throw error
       onClose() // Close dialog after update
+      onnUpdate()
     } catch (error) {
       console.error('Error updating request:', error)
     } finally {
@@ -117,6 +123,7 @@ const EditRequestDialog = ({ requestId, onClose }: { requestId: string; onClose:
 
         // Close dialog after deletion
         onClose()
+        onnUpdate()
       } catch (error) {
         console.error('Error deleting request:', error)
       } finally {
@@ -149,16 +156,6 @@ const EditRequestDialog = ({ requestId, onClose }: { requestId: string; onClose:
                 )}
               />
             </Field>
-
-            {request?.hasOwnProperty('quantity') && (
-              <Field label={t('quantity')}>
-                <Controller
-                  name="quantity"
-                  control={control}
-                  render={({ field }) => <Input {...field} placeholder={t('quantity')} />}
-                />
-              </Field>
-            )}
 
             <Button
               type="submit"

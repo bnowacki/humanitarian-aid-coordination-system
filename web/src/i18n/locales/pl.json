@@ -94,7 +94,8 @@
     "delete-event": "Usuń Event",
     "edit-event": "Edytuj Event",
     "actions": "Akcje",
-    "requests":"Requesty"
+    "requests":"Requesty",
+    "view-requests": "Pokaz Requesty"
   },
   "request": {
     "create-request":"Zarequestuj pomoc",
@@ -112,6 +113,12 @@
     "requests-for-event":"Zlozone Requesty dla tego Eventu",
     "status": "Status",
     "help-requests": "Requesty o Pomoc",
-    "resource-requests": "Requesty o towar"
+    "resource-requests": "Requesty o towar",
+    "edit-request": "Edytuj Request",
+    "update-request": "Aktualizuj Request",
+    "delete-request": "Usuń Request",
+    "request-manager": "Menadzer Requestów",
+    "actions": "Akcje",
+    "edit": "Edytuj"
   }
 }

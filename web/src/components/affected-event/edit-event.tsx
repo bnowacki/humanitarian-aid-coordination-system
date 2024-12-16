@@ -24,9 +24,11 @@ const statuses = ['active', 'completed', 'canceled']
 const EditEventDialog = ({
   eventId,
   onEventUpdated,
+  onClose,
 }: {
   eventId: string
   onEventUpdated: () => void
+  onClose: () => void
 }) => {
   const t = useTranslations('event')
   const { control, handleSubmit, reset } = useForm()
@@ -77,6 +79,7 @@ const EditEventDialog = ({
       // Trigger the parent component to refresh the events list
       onEventUpdated()
       setIsDialogOpen(false) // Close the dialog after update
+      onClose()
     } catch (error) {
       console.error('Error updating event:', error)
     } finally {
@@ -98,6 +101,7 @@ const EditEventDialog = ({
         // Trigger the parent component to refresh the events list
         onEventUpdated()
         setIsDialogOpen(false) // Close the dialog after deletion
+        onClose()
       } catch (error) {
         console.error('Error deleting event:', error)
       } finally {

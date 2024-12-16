@@ -94,7 +94,8 @@
     "delete-event": "Delete Event",
     "edit-event": "Edit Event",
     "actions": "Actions",
-    "requests":"Requests"
+    "requests":"Requests",
+    "view-requests": "View Requests"
   },
   "request": {
     "create-request":"Create request",
@@ -112,6 +113,12 @@
     "requests-for-event":"Requests made for this event",
     "status": "Status",
     "help-requests": "Help Requests",
-    "resource-requests": "Resource Requests"
+    "resource-requests": "Resource Requests",
+    "edit-request": "Edit Request",
+    "update-request": "Update Request",
+    "delete-request": "Delete Request",
+    "request-manager": "Request manager",
+    "actions": "Actions",
+    "edit": "Edit"
   }
 }

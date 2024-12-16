@@ -70,16 +70,7 @@ const CreateRequestDialog = ({
   }
 
   return (
-    <DialogRoot
-      size="cover"
-      placement="center"
-      motionPreset="slide-in-bottom"
-      open={isDialogOpen}
-      onOpenChange={isOpen => {
-        if (!isOpen) reset()
-        setIsDialogOpen(isOpen)
-      }}
-    >
+    <DialogRoot size="cover" placement="center" motionPreset="slide-in-bottom" open={isDialogOpen}>
       <Button onClick={() => setIsDialogOpen(true)} colorScheme="blue" size="sm">
         {t('create-request')}
       </Button>

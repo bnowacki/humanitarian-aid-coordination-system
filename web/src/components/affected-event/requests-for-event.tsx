@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   HStack,
+  Heading,
   Spinner,
   Table,
   TableCaption,
@@ -11,6 +12,7 @@ import {
   TableColumnHeader,
   TableRow,
 } from '@chakra-ui/react'
+import { useTranslations } from 'next-intl'
 
 import EditRequestDialog from '@/components/affected-event/editRequestDialog'
 import {
@@ -33,6 +35,7 @@ const AllUserRequestsDialog: React.FC<AllUserRequestsDialogProps> = ({ eventId, 
   const [resourceRequests, setResourceRequests] = useState<any[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [selectedRequest, setSelectedRequest] = useState<any | null>(null) // To manage the selected request for editing
+  const t = useTranslations('request')
 
   // Fetch requests for the event (both help and resource requests)
   const fetchRequests = async () => {
@@ -74,7 +77,7 @@ const AllUserRequestsDialog: React.FC<AllUserRequestsDialogProps> = ({ eventId, 
       <DialogRoot size="xl" placement="center" open={true}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Request Management</DialogTitle>
+            <DialogTitle>{t('request-manager')}</DialogTitle>
             <DialogCloseTrigger onClick={onClose} />
           </DialogHeader>
           <DialogBody>
@@ -87,15 +90,16 @@ const AllUserRequestsDialog: React.FC<AllUserRequestsDialogProps> = ({ eventId, 
                 {/* Resource Requests Table */}
                 {resourceRequests.length > 0 && (
                   <Box mb={4}>
+                    <Heading>{t('resource-requests')}</Heading>
                     <Table.Root size="sm">
-                      <TableCaption>Resource Requests</TableCaption>
                       <Table.Header>
                         <TableRow>
-                          <TableColumnHeader>Name</TableColumnHeader>
-                          <TableColumnHeader>Description</TableColumnHeader>
-                          <TableColumnHeader>Quantity</TableColumnHeader>
-                          <TableColumnHeader>Status</TableColumnHeader>
-                          <TableColumnHeader>Actions</TableColumnHeader> {/* Actions column */}
+                          <TableColumnHeader>{t('name')}</TableColumnHeader>
+                          <TableColumnHeader>{t('description')}</TableColumnHeader>
+                          <TableColumnHeader>{t('quantity')}</TableColumnHeader>
+                          <TableColumnHeader>{t('status')}</TableColumnHeader>
+                          <TableColumnHeader>{t('actions')}</TableColumnHeader>{' '}
+                          {/* Actions column */}
                         </TableRow>
                       </Table.Header>
                       <Table.Body>
@@ -106,7 +110,9 @@ const AllUserRequestsDialog: React.FC<AllUserRequestsDialogProps> = ({ eventId, 
                             <TableCell>{request.quantity || 'N/A'}</TableCell>
                             <TableCell>{request.status}</TableCell>
                             <TableCell>
-                              <Button onClick={() => handleEditRequest(request)}>Edit</Button>
+                              <Button onClick={() => handleEditRequest(request)}>
+                                {t('edit')}
+                              </Button>
                             </TableCell>
                           </TableRow>
                         ))}
@@ -118,14 +124,15 @@ const AllUserRequestsDialog: React.FC<AllUserRequestsDialogProps> = ({ eventId, 
                 {/* Help Requests Table */}
                 {helpRequests.length > 0 && (
                   <Box mb={4}>
+                    <Heading>{t('help-requests')}</Heading>
                     <Table.Root size="sm">
-                      <TableCaption>Help Requests</TableCaption>
                       <Table.Header>
                         <TableRow>
-                          <TableColumnHeader>Name</TableColumnHeader>
-                          <TableColumnHeader>Description</TableColumnHeader>
-                          <TableColumnHeader>Status</TableColumnHeader>
-                          <TableColumnHeader>Actions</TableColumnHeader> {/* Actions column */}
+                          <TableColumnHeader>{t('name')}</TableColumnHeader>
+                          <TableColumnHeader>{t('description')}</TableColumnHeader>
+                          <TableColumnHeader>{t('status')}</TableColumnHeader>
+                          <TableColumnHeader>{t('actions')}</TableColumnHeader>{' '}
+                          {/* Actions column */}
                         </TableRow>
                       </Table.Header>
                       <Table.Body>
@@ -135,7 +142,9 @@ const AllUserRequestsDialog: React.FC<AllUserRequestsDialogProps> = ({ eventId, 
                             <TableCell>{request.description}</TableCell>
                             <TableCell>{request.status}</TableCell>
                             <TableCell>
-                              <Button onClick={() => handleEditRequest(request)}>Edit</Button>
+                              <Button onClick={() => handleEditRequest(request)}>
+                                {t('edit')}
+                              </Button>
                             </TableCell>
                           </TableRow>
                         ))}
@@ -159,7 +168,7 @@ const AllUserRequestsDialog: React.FC<AllUserRequestsDialogProps> = ({ eventId, 
         <EditRequestDialog
           requestId={selectedRequest.id}
           onClose={() => setSelectedRequest(null)}
-          onUpdate={() => fetchRequests()} // Refresh the data after editing
+          onnUpdate={() => fetchRequests()} // Refresh the data after editing
         />
       )}
     </HStack>
