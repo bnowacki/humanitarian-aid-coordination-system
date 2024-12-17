@@ -77,6 +77,8 @@ To regenerate the database from migrations files run:
 
 ```bash
 make migrate DB_URI=postgresql://postgres:postgres@127.0.0.1:54322/postgres
+# or if you don't have make
+npx dbmate -d "./migrations" -u "postgresql://postgres:postgres@127.0.0.1:54322/postgres?TimeZone=UTC&sslmode=disable&binary_parameters=yes" migrate
 ```
 
 To reset the database to initial supabase state (all data and changes from `migrations` will be removed)
