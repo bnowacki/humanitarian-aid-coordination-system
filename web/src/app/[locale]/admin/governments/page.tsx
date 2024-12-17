@@ -127,22 +127,22 @@ export default function AdminGoverments() {
                                 <Heading as='h3'>{event.name}</Heading>
                                 <Text>{event.description}</Text>
 
-                                <Heading as='h4'>Assign Organization:</Heading>
-                                    <SelectRoot
-                                        collection={aidOrganizations}
-                                        onValueChange={(value) => handleAssignOrganization(event.id, Number(value))}
-                                    >
-                                        <SelectTrigger>
-                                        <SelectValueText placeholder="Select an organization" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                        {aidOrganizations.items.map((org) => (
-                                            <SelectItem key={org.value} item={org}>
-                                            {org.label}
-                                            </SelectItem>
-                                        ))}
-                                        </SelectContent>
-                                    </SelectRoot>
+                                <SelectRoot
+                                    collection={aidOrganizations}
+                                    onValueChange={(value) => handleAssignOrganization(event.id, Number(value))}
+                                >
+                                    <SelectLabel>Assign Organization:</SelectLabel>
+                                    <SelectTrigger>
+                                    <SelectValueText placeholder="Select an organization" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                    {aidOrganizations.items.map((org) => (
+                                        <SelectItem key={org.value} item={org}>
+                                        {org.label}
+                                        </SelectItem>
+                                    ))}
+                                    </SelectContent>
+                                </SelectRoot>
                             </Box>
                         ))
                     )}
