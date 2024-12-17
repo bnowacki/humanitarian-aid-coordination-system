@@ -7,9 +7,7 @@ export default async function Index() {
 
   return (
     <Stack flex={1} w="full" gap={20} textAlign="center">
-      <Heading>{t('title')}</Heading>
-          <Heading>TODO: List of events here</Heading>
-          <AdminGoverments /> 
+      <AdminGoverments /> 
     </Stack>
   );
 }

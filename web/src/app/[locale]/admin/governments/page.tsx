@@ -1,6 +1,25 @@
 'use client';
 
+import ReportSaveButton from '@/components/report-save-button';
 import React, { useState } from 'react';
+import {
+    Button,
+    Box,
+    Heading,
+    Flex,
+    List,
+    Input,
+    Strong,
+    Text,
+    SelectContent,
+    SelectItem,
+    SelectLabel,
+    SelectRoot,
+    SelectTrigger,
+    SelectValueText,
+    Stack,
+    createListCollection
+} from '@chakra-ui/react';
 
 // Mock data
 const mockReports = [
@@ -51,90 +70,97 @@ export default function AdminGoverments() {
         ));
     };
 
+    const aidOrganizations = createListCollection({
+        items: mockAidOrganizations.map((org) => ({
+          label: org.name,
+          value: String(org.id),
+        })),
+      });
+
     return (
-        <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-            <h1>Admin Panel: Aid Organizations</h1>
+        <Box minWidth={800} minHeight={600}>
+            <Heading as='h1'>Government XYZ Panel</Heading>
+            <br/><br/>
+            <Flex w="full" gap={10} textAlign="center">
+                {/* Section: Mock Reports */}
+                <Box minWidth={400} minHeight={600}>
+                    <Heading as='h2'>Mock Reports</Heading>
+                    <List.Root>
+                        {mockReports.map(report => (
+                            <List.Item key={report.id} style={{ marginBottom: '10px' }}>
+                                <Text><Strong>{report.title}</Strong> ({report.date})</Text>
+                                <Text>{report.description}</Text>
+                                <br/>
+                                <ReportSaveButton/>
+                            </List.Item>
+                        ))}
+                    </List.Root>
+                </Box>
 
-            {/* Section: Mock Reports */}
-            <section style={{ marginBottom: '20px' }}>
-                <h2>Mock Reports</h2>
-                <ul>
-                    {mockReports.map(report => (
-                        <li key={report.id} style={{ marginBottom: '10px' }}>
-                            <strong>{report.title}</strong> ({report.date})<br />
-                            {report.description}
-                        </li>
-                    ))}
-                </ul>
-            </section>
+                {/* Section: Create Crisis Event */}
+                <Box minWidth={400} minHeight={600}>
+                    <Heading as='h2'>Create Crisis Event</Heading>
+                    <Input
+                        type="text"
+                        placeholder="Event Name"
+                        value={newEvent.name}
+                        onChange={e => setNewEvent({ ...newEvent, name: e.target.value })}
+                        style={{ display: 'block', marginBottom: '10px' }}
+                    />
+                    <Input
+                        placeholder="Event Description"
+                        value={newEvent.description}
+                        onChange={e => setNewEvent({ ...newEvent, description: e.target.value })}
+                        style={{ display: 'block', marginBottom: '10px', width: '100%', height: '80px' }}
+                    />
+                    <Button onClick={handleCreateEvent}>Create Event</Button>
+                </Box>
 
-            {/* Section: Create Crisis Event */}
-            <section style={{ marginBottom: '20px' }}>
-                <h2>Create Crisis Event</h2>
-                <input
-                    type="text"
-                    placeholder="Event Name"
-                    value={newEvent.name}
-                    onChange={e => setNewEvent({ ...newEvent, name: e.target.value })}
-                    style={{ display: 'block', marginBottom: '10px' }}
-                />
-                <textarea
-                    placeholder="Event Description"
-                    value={newEvent.description}
-                    onChange={e => setNewEvent({ ...newEvent, description: e.target.value })}
-                    style={{ display: 'block', marginBottom: '10px', width: '100%', height: '80px' }}
-                />
-                <button onClick={handleCreateEvent}>Create Event</button>
-            </section>
+                {/* Section: Crisis Events */}
+                <Box minWidth={400} minHeight={600}>
+                    <Heading as='h2'>Crisis Events</Heading>
+                    {crisisEvents.length === 0 ? (
+                        <Text>No crisis events created yet.</Text>
+                    ) : (
+                        crisisEvents.map(event => (
+                            <Box key={event.id}>
+                                <Heading as='h3'>{event.name}</Heading>
+                                <Text>{event.description}</Text>
 
-            {/* Section: Crisis Events */}
-            <section style={{ marginBottom: '20px' }}>
-                <h2>Crisis Events</h2>
-                {crisisEvents.length === 0 ? (
-                    <p>No crisis events created yet.</p>
-                ) : (
-                    crisisEvents.map(event => (
-                        <div key={event.id} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
-                            <h3>{event.name}</h3>
-                            <p>{event.description}</p>
-                            <h4>Assigned Organizations:</h4>
-                            <ul>
-                                {event.assignedOrganizations.length === 0 ? (
-                                    <li>No organizations assigned yet.</li>
-                                ) : (
-                                    event.assignedOrganizations.map(orgId => {
-                                        const org = mockAidOrganizations.find(o => o.id === orgId);
-                                        return <li key={orgId}>{org?.name}</li>;
-                                    })
-                                )}
-                            </ul>
-                            <h4>Assign Organization:</h4>
-                            <select
-                                onChange={e => handleAssignOrganization(event.id, Number(e.target.value))}
-                                defaultValue=""
-                            >
-                                <option value="" disabled>Select an organization</option>
-                                {mockAidOrganizations.map(org => (
-                                    <option key={org.id} value={org.id}>{org.name}</option>
-                                ))}
-                            </select>
-                        </div>
-                    ))
-                )}
-            </section>
+                                <Heading as='h4'>Assign Organization:</Heading>
+                                    <SelectRoot
+                                        collection={aidOrganizations}
+                                        onValueChange={(value) => handleAssignOrganization(event.id, Number(value))}
+                                    >
+                                        <SelectTrigger>
+                                        <SelectValueText placeholder="Select an organization" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                        {aidOrganizations.items.map((org) => (
+                                            <SelectItem key={org.value} item={org}>
+                                            {org.label}
+                                            </SelectItem>
+                                        ))}
+                                        </SelectContent>
+                                    </SelectRoot>
+                            </Box>
+                        ))
+                    )}
+                </Box>
 
-            {/* Section: View Aid Organizations */}
-            <section>
-                <h2>View Aid Organizations</h2>
-                <ul>
-                    {mockAidOrganizations.map(org => (
-                        <li key={org.id} style={{ marginBottom: '10px' }}>
-                            <strong>{org.name}</strong><br />
-                            Contact: {org.contact}
-                        </li>
-                    ))}
-                </ul>
-            </section>
-        </div>
+                {/* Section: View Aid Organizations */}
+                <Box minWidth={400} minHeight={600}>
+                    <Heading as='h2'>View Aid Organizations</Heading>
+                    <List.Root>
+                        {mockAidOrganizations.map(org => (
+                            <List.Item key={org.id} style={{ marginBottom: '10px' }}>
+                                <Text><Strong>{org.name}</Strong></Text>
+                                Contact: {org.contact}
+                            </List.Item>
+                        ))}
+                    </List.Root>
+                </Box>
+         </Flex>
+        </Box>
     );
 }
