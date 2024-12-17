@@ -34,6 +34,21 @@ export type Database = {
   }
   public: {
     Tables: {
+      organizations: {
+        Row: {
+          id: string
+          name: string
+        }
+        Insert: {
+          id?: string
+          name: string
+        }
+        Update: {
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
       schema_migrations: {
         Row: {
           version: string
@@ -45,6 +60,41 @@ export type Database = {
           version?: string
         }
         Relationships: []
+      }
+      tasks: {
+        Row: {
+          deadline: string | null
+          description: string | null
+          id: string
+          status: string
+          title: string
+          volunteer_id: string
+        }
+        Insert: {
+          deadline?: string | null
+          description?: string | null
+          id?: string
+          status: string
+          title: string
+          volunteer_id: string
+        }
+        Update: {
+          deadline?: string | null
+          description?: string | null
+          id?: string
+          status?: string
+          title?: string
+          volunteer_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tasks_volunteer_id_fkey"
+            columns: ["volunteer_id"]
+            isOneToOne: false
+            referencedRelation: "volunteers"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       users: {
         Row: {
@@ -63,6 +113,59 @@ export type Database = {
           role?: Database["public"]["Enums"]["user_role"]
         }
         Relationships: []
+      }
+      volunteers: {
+        Row: {
+          aid_organization_id: string
+          availability: boolean
+          id: string
+          location: string | null
+          user_id: string
+        }
+        Insert: {
+          aid_organization_id: string
+          availability?: boolean
+          id?: string
+          location?: string | null
+          user_id: string
+        }
+        Update: {
+          aid_organization_id?: string
+          availability?: boolean
+          id?: string
+          location?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "volunteers_aid_organization_id_fkey"
+            columns: ["aid_organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "volunteers_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "admin_users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "volunteers_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "user_profile"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "volunteers_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
