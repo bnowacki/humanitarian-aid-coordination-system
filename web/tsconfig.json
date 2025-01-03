@@ -26,9 +26,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/[locale]/(app)/donations/page.jtx",
-    "src/app/[locale]/(app)/donations/DonationForm.tsx",
-    "src/app/[locale]/(app)/donations/donate/event.tsx"
   ],
   "exclude": ["node_modules"]
 }

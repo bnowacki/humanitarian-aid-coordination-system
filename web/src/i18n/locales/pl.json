@@ -77,5 +77,70 @@
     "sign-up": "Zarejestruj się",
     "admin-panel": "Panel administratora",
     "sign-out": "Wyloguj się"
+  },
+
+  "donationCampaigns": {
+    "title": {
+      "clothes": "Kampanie odzieżowe",
+      "food": "Kampanie żywnościowe",
+      "money": "Kampanie finansowe",
+      "default": "Kampanie charytatywne"
+    },
+    "winterClothesTitle": "Odzież zimowa dla bezdomnych",
+    "winterClothesDescription": "Pomóż zapewnić ciepłe ubrania dla osób potrzebujących w czasie zimy.",
+    "schoolUniformsTitle": "Jednolite mundurki szkolne dla dzieci",
+    "schoolUniformsDescription": "Zapewnij niezbędne mundurki szkolne dla dzieci z ubogich rodzin.",
+    "warmBlanketsTitle": "Ciepłe koce dla rodzin",
+    "warmBlanketsDescription": "Rozdaj ciepłe koce rodzinom w czasie zimy.",
+    "foodForFloodVictimsTitle": "Żywność dla ofiar powodzi",
+    "foodForFloodVictimsDescription": "Zapewnij niezbędne posiłki dla rodzin dotkniętych ostatnimi powodziami.",
+    "emergencyFoodKitsTitle": "Zestawy żywnościowe w nagłych przypadkach",
+    "emergencyFoodKitsDescription": "Dostarcz zestawy żywnościowe do rodzin w regionach dotkniętych katastrofami.",
+    "mealsForOrphanagesTitle": "Posiłki dla sierocińców",
+    "mealsForOrphanagesDescription": "Zapewnij pożywne posiłki dla sierocińców w potrzebie.",
+    "financialAidForEarthquakeSurvivorsTitle": "Pomoc finansowa dla ofiar trzęsienia ziemi",
+    "financialAidForEarthquakeSurvivorsDescription": "Wsparcie dla osób odbudowujących swoje życie po ostatnim trzęsieniu ziemi.",
+    "supportEducationForChildrenInNeedTitle": "Wsparcie edukacji dla dzieci w potrzebie",
+    "supportEducationForChildrenInNeedDescription": "Przekaż darowiznę, aby zapewnić stypendia i zasoby dla dzieci z ubogich rodzin.",
+    "medicalAidForRefugeesTitle": "Pomoc medyczna dla uchodźców",
+    "medicalAidForRefugeesDescription": "Zapewnij pomoc medyczną uchodźcom w strefach kryzysowych.",
+    "itemsNeeded": "{count} przedmiotów potrzebnych",
+    "remaining": "Pozostało: {remaining}",
+    "donateItems": "Przekaż przedmioty",
+    "donateNow": "Przekaż darowiznę"
+  },
+
+  "donationsPage": {
+    "title": "Co chciałbyś/chciałabyś przekazać?",
+    "donateClothes": "Przekaż ubrania",
+    "donateFood": "Przekaż jedzenie",
+    "donateMoney": "Przekaż pieniądze"
+  },
+  "formPage": {
+    "title": "Formularz Darowizny",
+    "moneyDescription": "Wypełnij poniższy formularz, aby dokonać darowizny.",
+    "itemsDescription": "Proszę sprawdzić listę wymaganych przedmiotów i wybrać ilości, które chcesz podarować.",
+    "goal": "Cel: ${amount}",
+    "donatedSoFar": "Dotychczas podarowane: ${amount}",
+    "remaining": "Pozostało: ${amount}",
+    "firstName": "Imię",
+    "firstNamePlaceholder": "Wprowadź swoje imię",
+    "lastName": "Nazwisko",
+    "lastNamePlaceholder": "Wprowadź swoje nazwisko",
+    "email": "Email",
+    "emailPlaceholder": "Wprowadź swój email",
+    "donationAmount": "Kwota Darowizny",
+    "donationAmountPlaceholder": "Wprowadź kwotę darowizny",
+    "itemsNeeded": "Potrzebne przedmioty:",
+    "needed": "Potrzebne",
+    "additionalMessage": "Dodatkowa wiadomość (opcjonalnie)",
+    "additionalMessagePlaceholder": "Wprowadź dodatkową wiadomość",
+    "cancel": "Anuluj",
+    "submitDonation": "Zatwierdź Darowiznę",
+    "blankets": "Koce",
+    "shoes": "Buty",
+    "jackets": "Kurtki",
+    "meal boxes": "Pudełka z posiłkami",
+    "juice boxes": "Soki w kartonach"
   }
 }

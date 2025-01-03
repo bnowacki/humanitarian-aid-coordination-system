@@ -1,14 +1,17 @@
 'use client'
 
 import { Box, Button, Flex, Grid, Heading, Image, Text } from '@chakra-ui/react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
+import { useSearchParams } from 'next/navigation'
+
+import { useRouter } from '@/i18n/navigation'
 
 // Original donation campaigns with 3 events for each type
 const donationCampaigns = {
   clothes: [
     {
-      title: 'Winter Clothes for the Homeless',
-      description: 'Help provide warm clothes for those in need during the winter.',
+      title: 'winterClothesTitle',
+      description: 'winterClothesDescription',
       image:
         'https://images.unsplash.com/photo-1542367787-4baf35f3037d?q=80&w=2670&auto=format&fit=crop',
       altText: 'Winter Clothes',
@@ -19,8 +22,8 @@ const donationCampaigns = {
       ],
     },
     {
-      title: 'School Uniforms for Kids',
-      description: 'Provide essential school uniforms for underprivileged children.',
+      title: 'schoolUniformsTitle',
+      description: 'schoolUniformsDescription',
       image:
         'https://images.unsplash.com/photo-1636320804382-912276801e97?q=80&w=2671&auto=format&fit=crop',
       altText: 'School Uniforms',
@@ -30,8 +33,8 @@ const donationCampaigns = {
       ],
     },
     {
-      title: 'Warm Blankets for Families',
-      description: 'Distribute warm blankets to families during winter.',
+      title: 'warmBlanketsTitle',
+      description: 'warmBlanketsDescription',
       image:
         'https://images.unsplash.com/photo-1507427100689-2bf8574e32d4?q=80&w=2574&auto=format&fit=crop',
       altText: 'Warm Blankets',
@@ -40,8 +43,8 @@ const donationCampaigns = {
   ],
   food: [
     {
-      title: 'Food for Flood Victims',
-      description: 'Provide essential meals to families affected by recent floods.',
+      title: 'foodForFloodVictimsTitle',
+      description: 'foodForFloodVictimsDescription',
       image:
         'https://images.unsplash.com/photo-1609520778163-a16fb3862581?q=80&w=2574&auto=format&fit=crop',
       altText: 'Food Donations',
@@ -51,8 +54,8 @@ const donationCampaigns = {
       ],
     },
     {
-      title: 'Emergency Food Kits',
-      description: 'Provide emergency food kits to families in disaster-hit regions.',
+      title: 'emergencyFoodKitsTitle',
+      description: 'emergencyFoodKitsDescription',
       image:
         'https://images.unsplash.com/photo-1507427100689-2bf8574e32d4?q=80&w=2574&auto=format&fit=crop',
       altText: 'Emergency Food Kits',
@@ -62,8 +65,8 @@ const donationCampaigns = {
       ],
     },
     {
-      title: 'Meals for Orphanages',
-      description: 'Provide nutritious meals to orphanages in need.',
+      title: 'mealsForOrphanagesTitle',
+      description: 'mealsForOrphanagesDescription',
       image:
         'https://plus.unsplash.com/premium_photo-1683140523610-13deecbd20b1?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       altText: 'Orphanage Meals',
@@ -75,8 +78,8 @@ const donationCampaigns = {
   ],
   money: [
     {
-      title: 'Financial Aid for Earthquake Survivors',
-      description: 'Support those rebuilding their lives after the recent earthquake.',
+      title: 'financialAidForEarthquakeSurvivorsTitle',
+      description: 'financialAidForEarthquakeSurvivorsDescription',
       image:
         'https://plus.unsplash.com/premium_photo-1716717998303-803fdbc38747?q=80&w=2532&auto=format&fit=crop',
       altText: 'Earthquake Relief',
@@ -84,8 +87,8 @@ const donationCampaigns = {
       donatedAmount: 7000,
     },
     {
-      title: 'Support Education for Children in Need',
-      description: 'Donate to provide scholarships and resources for underprivileged kids.',
+      title: 'supportEducationForChildrenInNeedTitle',
+      description: 'supportEducationForChildrenInNeedDescription',
       image:
         'https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2464&auto=format&fit=crop',
       altText: 'Education Support',
@@ -93,8 +96,8 @@ const donationCampaigns = {
       donatedAmount: 2500,
     },
     {
-      title: 'Medical Aid for Refugees',
-      description: 'Provide medical assistance to refugees in crisis zones.',
+      title: 'medicalAidForRefugeesTitle',
+      description: 'medicalAidForRefugeesDescription',
       image:
         'https://images.unsplash.com/photo-1581056771392-8a90ddb76831?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       altText: 'Medical Aid',
@@ -107,9 +110,9 @@ const donationCampaigns = {
 const EventPage = () => {
   const searchParams = useSearchParams()
   const type = searchParams.get('type') // Get the donation type (e.g., 'money', 'clothes', 'food')
-
   const campaigns = donationCampaigns[type as keyof typeof donationCampaigns] || []
   const router = useRouter()
+  const t = useTranslations() // Use translations here
 
   const handleDonateClick = (campaign: any) => {
     const title = campaign?.title || 'default-campaign-title'
@@ -131,7 +134,7 @@ const EventPage = () => {
   return (
     <Flex direction="column" align="center" gap={6} p={4}>
       <Heading fontSize="2xl" mb={4}>
-        {type ? `Donation Campaigns for ${type}` : 'Donation Campaigns'}
+        {t(`donationCampaigns.title.${type || 'default'}`)}
       </Heading>
 
       <Grid templateColumns="repeat(3, 1fr)" gap={6} justifyItems="center" w="full">
@@ -156,16 +159,18 @@ const EventPage = () => {
             />
             <Box p={4} flex="1">
               <Heading fontSize="lg" mb={2}>
-                {campaign.title}
+                {t(`donationCampaigns.${campaign.title}`)}
               </Heading>
-              <Text mb={4}>{campaign.description}</Text>
+              <Text mb={4}>{t(`donationCampaigns.${campaign.description}`)}</Text>
               {campaign.requiredItems ? (
                 <Text fontWeight="bold" mb={4}>
-                  Items Needed: {campaign.requiredItems.length}
+                  {t('donationCampaigns.itemsNeeded', { count: campaign.requiredItems.length })}
                 </Text>
               ) : (
                 <Text fontWeight="bold" mb={4}>
-                  Remaining: ${campaign.targetAmount - campaign.donatedAmount}
+                  {t('donationCampaigns.remaining', {
+                    remaining: campaign.targetAmount - campaign.donatedAmount,
+                  })}
                 </Text>
               )}
               <Button
@@ -174,7 +179,9 @@ const EventPage = () => {
                 mt="auto"
                 onClick={() => handleDonateClick(campaign)}
               >
-                {campaign.requiredItems ? 'Donate Items' : 'Donate Now'}
+                {campaign.requiredItems
+                  ? t('donationCampaigns.donateItems')
+                  : t('donationCampaigns.donateNow')}
               </Button>
             </Box>
           </Box>

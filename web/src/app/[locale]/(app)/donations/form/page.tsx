@@ -2,14 +2,19 @@
 
 import { useState } from 'react'
 
+// Import the useTranslations hook
 import { Box, Button, Card, Input, Stack, Text, Textarea } from '@chakra-ui/react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
+import { useSearchParams } from 'next/navigation'
 
 import { Field } from '@/components/ui/field'
+import { useRouter } from '@/i18n/navigation'
 
 const FormPage = () => {
   const searchParams = useSearchParams()
   const router = useRouter()
+
+  const t = useTranslations() // Use translations here
 
   const campaignTitle = searchParams.get('campaign') || ''
   const donationType = searchParams.get('donationType') || 'money'
@@ -52,11 +57,12 @@ const FormPage = () => {
   return (
     <Card.Root maxW="sm" p={4}>
       <Card.Header>
-        <Card.Title>Donation Form for {campaignTitle}</Card.Title>
+        <Card.Title>{t('formPage.title', { campaignTitle })}</Card.Title> {/* Translated title */}
         <Card.Description>
           {donationType === 'money'
-            ? 'Fill in the form below to make your donation.'
-            : 'Please check the list of items required and select the quantities you wish to donate.'}
+            ? t('formPage.moneyDescription') // Translated money description
+            : t('formPage.itemsDescription')}{' '}
+          {/* Translated items description */}
         </Card.Description>
       </Card.Header>
       <Card.Body>
@@ -64,66 +70,67 @@ const FormPage = () => {
           {donationType === 'money' && (
             <>
               <Text fontSize="lg" fontWeight="bold">
-                Goal: ${targetAmount}
+                {t('formPage.goal', { amount: targetAmount })}
               </Text>
               <Text fontSize="lg" fontWeight="bold" color="green.600">
-                Donated so far: ${donatedAmount}
+                {t('formPage.donatedSoFar', { amount: donatedAmount })}
               </Text>
               <Text fontSize="lg" fontWeight="bold" color="red.600">
-                Remaining: ${remainingAmount > 0 ? remainingAmount : 0}
+                {t('formPage.remaining', { amount: remainingAmount > 0 ? remainingAmount : 0 })}
               </Text>
             </>
           )}
 
           {/* Name */}
-          <Field label="First Name">
+          <Field label={t('formPage.firstName')}>
             <Input
               value={name}
               onChange={e => setName(e.target.value)}
-              placeholder="Enter your first name"
+              placeholder={t('formPage.firstNamePlaceholder')}
             />
           </Field>
 
           {/* Surname */}
-          <Field label="Last Name">
+          <Field label={t('formPage.lastName')}>
             <Input
               value={surname}
               onChange={e => setSurname(e.target.value)}
-              placeholder="Enter your last name"
+              placeholder={t('formPage.lastNamePlaceholder')}
             />
           </Field>
 
           {/* Email */}
-          <Field label="Email">
+          <Field label={t('formPage.email')}>
             <Input
               type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              placeholder="Enter your email"
+              placeholder={t('formPage.emailPlaceholder')}
             />
           </Field>
 
           {/* Donation Type - Money */}
           {donationType === 'money' ? (
-            <Field label="Donation Amount">
+            <Field label={t('formPage.donationAmount')}>
               <Input
                 type="number"
                 value={amount}
                 onChange={e => setAmount(e.target.value)}
-                placeholder="Enter the amount to donate"
+                placeholder={t('formPage.donationAmountPlaceholder')}
               />
             </Field>
           ) : (
             // Donation Type - Items
             <Box>
               <Text fontWeight="bold" mb={2}>
-                Items Needed:
+                {t('formPage.itemsNeeded')}
               </Text>
               <Stack gap={2}>
                 {items.map((item: any, idx: number) => (
                   <Box key={idx} display="flex" justifyContent="space-between" alignItems="center">
                     <Text>
-                      {item.item} (Needed: {item.quantity})
+                      {t(`formPage.${item.item.toLowerCase()}`) || item.item} (
+                      {t('formPage.needed')} {item.quantity})
                     </Text>
                     <Input
                       type="number"
@@ -139,21 +146,21 @@ const FormPage = () => {
           )}
 
           {/* Message */}
-          <Field label="Additional Message (optional)">
+          <Field label={t('formPage.additionalMessage')}>
             <Textarea
               value={message}
               onChange={e => setMessage(e.target.value)}
-              placeholder="Enter any additional message"
+              placeholder={t('formPage.additionalMessagePlaceholder')}
             />
           </Field>
         </Stack>
       </Card.Body>
       <Card.Footer justifyContent="flex-end">
         <Button variant="outline" onClick={() => router.back()}>
-          Cancel
+          {t('formPage.cancel')} {/* Translated Cancel button */}
         </Button>
         <Button colorScheme="blue" onClick={handleSubmit}>
-          Submit Donation
+          {t('formPage.submitDonation')} {/* Translated Submit button */}
         </Button>
       </Card.Footer>
     </Card.Root>
