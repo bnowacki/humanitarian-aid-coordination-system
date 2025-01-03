@@ -77,5 +77,41 @@
     "sign-up": "Zarejestruj się",
     "admin-panel": "Panel administratora",
     "sign-out": "Wyloguj się"
+  },
+  "event": {
+    "table-of-events": "Tabela Eventów",
+    "title": "Tytuł",
+    "event-title": "Tytuł Eventu",
+    "location": "Lokalizacja",
+    "event-location": "Lokalizacja Eventu",
+    "status": "Status",
+    "description": "Opis",
+    "event-description": "Opis Eventu",
+    "add-event": "Dodaj Event",
+    "add-new-event": "Dodaj nowy Event",
+    "edit": "edytuj",
+    "update-event": "Aktualizuj Event",
+    "delete-event": "Usuń Event",
+    "edit-event": "Edytuj Event",
+    "actions": "Akcje",
+    "requests":"Requesty"
+  },
+  "request": {
+    "create-request":"Zarequestuj pomoc",
+    "request-type":"Typ Prośby",
+    "resource":"Prośba o towar",
+    "help":"Prośba o Pomoc",
+    "name":"Nazwa",
+    "request-name":"Nazwa Prośby",
+    "description":"Opis",
+    "request-description":"Opis Prośby",
+    "quantity":"Ilość",
+    "resource-quantity":"Ilość towaru",
+    "view-requests":"Pokaz zlozone Requesty",
+    "no-requests":"Brak Requestów do wyświetlenia",
+    "requests-for-event":"Zlozone Requesty dla tego Eventu",
+    "status": "Status",
+    "help-requests": "Requesty o Pomoc",
+    "resource-requests": "Requesty o towar"
   }
 }
