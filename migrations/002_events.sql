@@ -10,7 +10,7 @@ create table "events" (
   "location" text not null,
   "status" event_status not null default 'active',
   "description" text,
-  "government_it" uuid default gen_random_uuid(),  -- Default for government_it
+  "government_id" uuid default gen_random_uuid(),  -- Default for government_id
   "organization_id" uuid default gen_random_uuid()  -- Default for organization_id
 );
 
