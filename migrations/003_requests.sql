@@ -32,12 +32,3 @@ create table "resource_requests" (
 -- No row-level security (RLS) defined by default; can add policies later.
 
 -- migrate:down
-
--- Drop the resource_requests table
-drop table if exists "resource_requests";
-
--- Drop the help_requests table
-drop table if exists "help_requests";
-
--- Drop the request_status enum
-drop type if exists request_status;

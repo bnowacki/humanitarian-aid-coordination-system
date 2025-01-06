@@ -119,6 +119,7 @@
     "delete-request": "Usuń Request",
     "request-manager": "Menadzer Requestów",
     "actions": "Akcje",
-    "edit": "Edytuj"
+    "edit": "Edytuj",
+    "quantity-placeholder": "Ilość"
   }
 }
