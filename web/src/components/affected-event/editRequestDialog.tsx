@@ -72,7 +72,7 @@ const EditRequestDialog = ({
     if (requestId) {
       fetchRequest()
     }
-  }, [requestId, reset])
+  }, [requestId, reset]) // eslint-disable-line
 
   // Handle request update
   const onUpdate = async (data: any) => {
@@ -85,7 +85,9 @@ const EditRequestDialog = ({
 
     try {
       const supabase = createClient()
-      let requestType = request?.hasOwnProperty('quantity') ? 'resource_requests' : 'help_requests'
+      const requestType = request?.hasOwnProperty('quantity')
+        ? 'resource_requests'
+        : 'help_requests'
 
       const { error } = await supabase
         .from(requestType)
@@ -110,7 +112,7 @@ const EditRequestDialog = ({
       setLoading(true)
       try {
         const supabase = createClient()
-        let requestType = request?.hasOwnProperty('quantity')
+        const requestType = request?.hasOwnProperty('quantity')
           ? 'resource_requests'
           : 'help_requests'
 

@@ -17,7 +17,6 @@ export default function EventManager() {
   const [loading, setLoading] = useState<boolean>(true)
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null) // Track selected event ID for editing
   const [selectedRequestsEventId, setSelectedRequestsEventId] = useState<string | null>(null) // Track selected event ID for requests dialog
-  const [loadingRequests, setLoadingRequests] = useState<boolean>(false) // Track loading state for requests
 
   // Fetch events from the database
   const fetchEvents = async () => {

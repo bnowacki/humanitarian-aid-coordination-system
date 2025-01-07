@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { Box, Button, Heading, Spinner, Table } from '@chakra-ui/react'
 import { useTranslations } from 'next-intl'

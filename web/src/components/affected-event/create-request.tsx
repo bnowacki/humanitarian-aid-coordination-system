@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import { Input } from '@chakra-ui/react'
 import { useTranslations } from 'next-intl'
-import { Controller, Watch, useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
 import {

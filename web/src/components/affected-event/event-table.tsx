@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-import { Box, Button, Heading, Spinner, Table } from '@chakra-ui/react'
+import { Box, Heading, Spinner, Table } from '@chakra-ui/react'
 import { useTranslations } from 'next-intl'
 
 import CreateRequestDialog from '@/components/affected-event/create-request'

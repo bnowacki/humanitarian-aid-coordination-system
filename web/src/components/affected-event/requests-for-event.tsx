@@ -7,7 +7,6 @@ import {
   Heading,
   Spinner,
   Table,
-  TableCaption,
   TableCell,
   TableColumnHeader,
   TableRow,
@@ -66,7 +65,7 @@ const AllUserRequestsDialog: React.FC<AllUserRequestsDialogProps> = ({ eventId, 
     if (eventId) {
       fetchRequests() // Trigger the fetch when the eventId changes
     }
-  }, [eventId])
+  }, [eventId]) // eslint-disable-line
 
   const handleEditRequest = (request: any) => {
     setSelectedRequest(request) // Set the selected request
