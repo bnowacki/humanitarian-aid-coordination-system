@@ -34,6 +34,157 @@ export type Database = {
   }
   public: {
     Tables: {
+      events: {
+        Row: {
+          description: string | null
+          government_id: string | null
+          id: string
+          location: string
+          organization_id: string | null
+          status: Database["public"]["Enums"]["event_status"]
+          title: string
+        }
+        Insert: {
+          description?: string | null
+          government_id?: string | null
+          id?: string
+          location: string
+          organization_id?: string | null
+          status?: Database["public"]["Enums"]["event_status"]
+          title: string
+        }
+        Update: {
+          description?: string | null
+          government_id?: string | null
+          id?: string
+          location?: string
+          organization_id?: string | null
+          status?: Database["public"]["Enums"]["event_status"]
+          title?: string
+        }
+        Relationships: []
+      }
+      help_requests: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          event_id: string
+          id: string
+          name: string
+          status: "PENDING" | "SUCCESS" | "ERROR"
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          event_id: string
+          id?: string
+          name: string
+          status?: "PENDING" | "SUCCESS" | "ERROR"
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          event_id?: string
+          id?: string
+          name?: string
+          status?: "PENDING" | "SUCCESS" | "ERROR"
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "help_requests_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "help_requests_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "admin_users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "help_requests_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "user_profile"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "help_requests_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      resource_requests: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          event_id: string
+          id: string
+          name: string
+          quantity: number
+          status: "PENDING" | "SUCCESS" | "ERROR"
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          event_id: string
+          id?: string
+          name: string
+          quantity: number
+          status?: "PENDING" | "SUCCESS" | "ERROR"
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          event_id?: string
+          id?: string
+          name?: string
+          quantity?: number
+          status?: "PENDING" | "SUCCESS" | "ERROR"
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "resource_requests_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "resource_requests_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "admin_users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "resource_requests_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "user_profile"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "resource_requests_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       schema_migrations: {
         Row: {
           version: string
@@ -102,6 +253,8 @@ export type Database = {
       }
     }
     Enums: {
+      event_status: "active" | "completed" | "canceled"
+      request_status: "pending" | "approved" | "rejected" | "fulfilled"
       user_role: "user" | "admin"
     }
     CompositeTypes: {
