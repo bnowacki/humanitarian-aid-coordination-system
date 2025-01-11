@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react'
 
 import { createListCollection } from '@ark-ui/react'
 import { Box, Spinner, Text } from '@chakra-ui/react'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
-import { SelectContent, SelectItem, SelectRoot, SelectTrigger } from '@/components/ui/select'
+import { Button } from '@/components/ui/button'
 import { createClient } from '@/lib/supabase/client'
 
 const TasksPage = () => {
@@ -16,10 +16,10 @@ const TasksPage = () => {
   const [tasks, setTasks] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const supabase = createClient()
+  const router = useRouter()
 
   const allowedStatuses = ['pending', 'in_progress', 'completed']
 
-  // Adjusted collection initialization to meet the required structure
   const statusCollection = createListCollection({
     items: allowedStatuses.map(status => ({ key: status, value: status })),
   })
@@ -49,12 +49,28 @@ const TasksPage = () => {
     fetchTasks()
   }, [supabase, volunteerId])
 
-  const handleStatusChange = async (taskId: string, newStatus: string) => {
-    if (!allowedStatuses.includes(newStatus)) {
-      console.error('Invalid status:', newStatus)
-      return // Prevent update if the status is not allowed
+  const handleCreateTaskClick = async () => {
+    if (!volunteerId) {
+      console.error('Volunteer ID is null')
+      return
     }
 
+    const { data, error } = await supabase
+      .from('volunteers')
+      .select('aid_organization_id')
+      .eq('id', volunteerId)
+      .single()
+
+    if (error) {
+      console.error('Error fetching organization ID:', error.message)
+      return
+    }
+
+    const organizationId = data.aid_organization_id
+    router.push(`/organizations/createTaskPage/?organization_id=${organizationId}`)
+  }
+
+  const handleStatusChange = async (taskId: string, newStatus: string) => {
     const { error } = await supabase.from('tasks').update({ status: newStatus }).eq('id', taskId)
 
     if (error) {
@@ -72,11 +88,14 @@ const TasksPage = () => {
 
   return (
     <Box p={4}>
+      <Button colorScheme="blue" onClick={handleCreateTaskClick}>
+        Create Task
+      </Button>
       <Text fontSize="2xl" mb={4}>
         Volunteer Tasks
       </Text>
       {tasks.length === 0 ? (
-        <Text>No tasks assigned yet</Text>
+        <Text>No tasks found</Text>
       ) : (
         tasks.map(task => (
           <Box key={task.id} borderWidth="1px" borderRadius="md" p={4} mb={3}>

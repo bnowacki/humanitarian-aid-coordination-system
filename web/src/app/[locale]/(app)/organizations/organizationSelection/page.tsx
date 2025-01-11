@@ -15,7 +15,6 @@ const OrganizationsPage = ({ userId }: { userId: string }) => {
   const router = useRouter()
   const supabase = createClient()
 
-  // Fetch all organizations
   useEffect(() => {
     const fetchOrganizations = async () => {
       const { data, error } = await supabase.from('organizations').select('*')
@@ -30,11 +29,9 @@ const OrganizationsPage = ({ userId }: { userId: string }) => {
     fetchOrganizations()
   }, [supabase])
 
-  // Handle "Choose" button
-
   const handleChooseOrganization = async (organizationId: string) => {
     const supabase = createClient()
-    const user = await supabase.auth.getUser() // Get current user
+    const user = await supabase.auth.getUser()
     const userId = user.data?.user?.id
 
     if (!userId) {
@@ -43,7 +40,6 @@ const OrganizationsPage = ({ userId }: { userId: string }) => {
     }
 
     try {
-      // Check if volunteer already exists
       const { data: existingVolunteer, error: fetchError } = await supabase
         .from('volunteers')
         .select('id')
@@ -58,7 +54,6 @@ const OrganizationsPage = ({ userId }: { userId: string }) => {
       let volunteerId = existingVolunteer?.id
 
       if (!volunteerId) {
-        // Insert new volunteer
         const { data: insertedVolunteer, error: insertError } = await supabase
           .from('volunteers')
           .insert([
@@ -68,14 +63,13 @@ const OrganizationsPage = ({ userId }: { userId: string }) => {
               availability: true,
             },
           ])
-          .select('id') // Return the inserted ID
+          .select('id')
           .single()
 
         if (insertError) throw insertError
         volunteerId = insertedVolunteer.id
       }
 
-      // Redirect to tasks page with volunteerId
       router.push(`/tasks?volunteerId=${volunteerId}`)
     } catch (error) {
       console.error('Error handling choose organization:')

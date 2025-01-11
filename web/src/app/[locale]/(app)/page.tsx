@@ -8,7 +8,7 @@ export default async function Index() {
     <Stack flex={1} w="full" gap={20} textAlign="center">
       <Heading>{t('title')}</Heading>
       <Heading>TODO: List of events here</Heading>
-      <Link href="/organizations">
+      <Link href="/organizations/organizationSelection">
         <Button colorScheme="blue" size="lg">
           Go to Organizations
         </Button>
