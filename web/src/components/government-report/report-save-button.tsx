@@ -2,7 +2,7 @@
 
 import { Button } from '@chakra-ui/react';
 import { jsPDF, HTMLWorker } from 'jspdf';
-import fetchReportHTML from '../lib/report';
+import fetchReportHTML from '@/lib/government-report/report';
 
 export default function ReportSaveButton(): JSX.Element {
     const generateReport = (html: string): [jsPDF, HTMLWorker] => {
