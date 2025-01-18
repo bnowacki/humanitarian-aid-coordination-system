@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { createClient } from '@/lib/supabase/client'
 
-const OrganizationsPage = ({ userId }: { userId: string }) => {
+const OrganizationsPage = () => {
   const [organizations, setOrganizations] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [selecting, setSelecting] = useState<string | null>(null)

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 
-import { createListCollection } from '@ark-ui/react'
 import { Box, Spinner, Text } from '@chakra-ui/react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
@@ -19,10 +18,6 @@ const TasksPage = () => {
   const router = useRouter()
 
   const allowedStatuses = ['pending', 'in_progress', 'completed']
-
-  const statusCollection = createListCollection({
-    items: allowedStatuses.map(status => ({ key: status, value: status })),
-  })
 
   useEffect(() => {
     const fetchTasks = async () => {
