@@ -200,6 +200,33 @@ export type Database = {
           },
         ]
       }
+      resources: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          id: string
+          name: string
+          quantity: number | null
+          warehouse_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          name: string
+          quantity?: number | null
+          warehouse_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          name?: string
+          quantity?: number | null
+          warehouse_id?: string | null
+        }
+        Relationships: []
+      }
       schema_migrations: {
         Row: {
           version: string
