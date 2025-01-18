@@ -1,4 +1,4 @@
-import { Heading, Stack } from '@chakra-ui/react'
+﻿import { Heading, Stack } from '@chakra-ui/react'
 import { getTranslations } from 'next-intl/server'
 
 import EventTable from '@/components/affected-event/event-table'
