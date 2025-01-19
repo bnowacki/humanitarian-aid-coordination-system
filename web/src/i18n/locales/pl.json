@@ -50,6 +50,26 @@
       "no-results-description": "Brak użytkowników odpowiadających wybranym filtrom",
       "clear-filters": "Wyczyść filtry"
     },
+    "organizations": {
+      "title": "Organizacje charytatywne",
+      "name": "Nazwa",
+      "description": "Opis",
+      "no-results": "Brak wyników",
+      "no-results-description": "Brak organizacji odpowiadających wybranym filtrom",
+      "clear-filters": "Wyczyść filtry",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "editor-title": "Edytuj organizację",
+      "delete-confirm": "Czy na pewno chcesz usunąć tę organizację?",
+      "delete-error": "Nie udało się usunąć organizacji",
+      "create-organization": "Utwórz organizację",
+      "create-title": "Utwórz nową organizację",
+      "delete-dialog-title": "Czy na pewno?",
+      "delete-dialog-description": "Ta operacja jest nieodwracalna.",
+      "delete-dialog-confirm": "Usuń",
+      "cancel": "Anuluj",
+      "save-error": "Nie udało się zapisać organizacji"
+    },
     "sidebar": {
       "dashboard": "Dashboard",
       "users": "Użytkownicy",

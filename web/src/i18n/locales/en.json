@@ -50,6 +50,25 @@
       "no-results-description": "There are no users matching the selected filters",
       "clear-filters": "Clear filters"
     },
+    "organizations": {
+      "title": "Aid Organizations",
+      "name": "Name",
+      "description": "Description",
+      "no-results": "No results found",
+      "no-results-description": "There are no organizations matching the selected filters",
+      "clear-filters": "Clear filters",
+      "edit": "Edit",
+      "delete": "Delete",
+      "editor-title": "Edit organization",
+      "delete-confirm": "Are you sure you want to delete this organization?",
+      "delete-error": "Failed to delete organization",
+      "create-organization": "Create organization",
+      "create-title": "Create a new organization",
+      "delete-dialog-title": "Are you sure?",
+      "delete-dialog-description": "This action cannot be undone.",
+      "cancel": "Cancel",
+      "save-error": "Failed to save organization"
+    },
     "sidebar": {
       "dashboard": "Dashboard",
       "users": "Users",
