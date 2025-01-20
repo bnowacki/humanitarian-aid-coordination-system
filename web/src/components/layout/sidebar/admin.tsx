@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 
 import {
+  IconExclamationCircle,
   IconFirstAidKit,
   IconGavel,
   IconHome,
@@ -27,6 +28,11 @@ export default function AdminSidebar() {
         label: t('users'),
         href: '/admin/users',
         icon: <IconUsers />,
+      },
+      {
+        label: t('events'),
+        href: '/admin/events',
+        icon: <IconExclamationCircle />,
       },
       {
         label: t('governments'),

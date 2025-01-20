@@ -2,12 +2,15 @@
 
 import { useEffect, useState } from 'react'
 
-import { Box, Button, Input, Select, Spinner, Text } from '@chakra-ui/react'
+import { Box, Button, Input, Spinner, Text } from '@chakra-ui/react'
 import { useSearchParams } from 'next/navigation'
 
+import { useRouter } from '@/i18n/navigation'
 import { createClient } from '@/lib/supabase/client'
 
 const CreateTaskPage = () => {
+  const router = useRouter()
+
   const searchParams = useSearchParams()
   const organizationId = searchParams.get('organization_id')
 
@@ -50,9 +53,9 @@ const CreateTaskPage = () => {
   }, [supabase, organizationId])
 
   const handleCreateTask = async () => {
-    debugger
     if (!selectedVolunteer || !taskTitle || !taskDescription) {
-      console.error('All fields are required')
+      alert('All fields are required')
+      console.log({ selectedVolunteer, taskTitle, taskDescription })
       return
     }
 
@@ -65,9 +68,11 @@ const CreateTaskPage = () => {
 
     if (error) {
       console.error('Error creating task:', error.message)
+      alert('Error creating task')
     } else {
-      console.log('Task created successfully')
+      alert('Task created successfully')
       // Optionally, redirect or clear the form
+      router.back()
     }
   }
 
@@ -81,6 +86,9 @@ const CreateTaskPage = () => {
         Create Task
       </Text>
       <select value={selectedVolunteer || ''} onChange={e => setSelectedVolunteer(e.target.value)}>
+        <option key="none" value={null}>
+          Select volunteer
+        </option>
         {volunteers.map(volunteer => (
           <option key={volunteer.id} value={volunteer.id}>
             {volunteer.name} ({volunteer.email})

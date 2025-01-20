@@ -74,7 +74,8 @@
       "users": "Users",
       "home": "Home",
       "governments": "Governments",
-      "aid-organizations": "Aid Organizations"
+      "aid-organizations": "Aid Organizations",
+      "events": "Events"
     }
   },
   "pagination": {
@@ -95,7 +96,12 @@
     "sign-in": "Sign in",
     "sign-up": "Sign up",
     "admin-panel": "Admin panel",
-    "sign-out": "Sign out"
+    "sign-out": "Sign out",
+    "donations": "Donations",
+    "resources": "Resources",
+    "valunteers": "For Volunteers",
+    "government-report": "For Government",
+    "maps": "Map"
   },
   "event": {
     "table-of-events": "Table of events",
@@ -113,23 +119,23 @@
     "delete-event": "Delete Event",
     "edit-event": "Edit Event",
     "actions": "Actions",
-    "requests":"Requests",
+    "requests": "Requests",
     "view-requests": "View Requests"
   },
   "request": {
-    "create-request":"Create request",
-    "request-type":"Request type",
-    "resource":"Resource request",
-    "help":"Request Help",
-    "name":"Name",
-    "request-name":"Request Name",
-    "description":"Description",
-    "request-description":"Request Description",
-    "quantity":"Quantity",
-    "resource-quantity":"Resource Quantity",
-    "view-requests":"View Requests",
-    "no-requests":"No requests to display",
-    "requests-for-event":"Requests made for this event",
+    "create-request": "Create request",
+    "request-type": "Request type",
+    "resource": "Resource request",
+    "help": "Request Help",
+    "name": "Name",
+    "request-name": "Request Name",
+    "description": "Description",
+    "request-description": "Request Description",
+    "quantity": "Quantity",
+    "resource-quantity": "Resource Quantity",
+    "view-requests": "View Requests",
+    "no-requests": "No requests to display",
+    "requests-for-event": "Requests made for this event",
     "status": "Status",
     "help-requests": "Help Requests",
     "resource-requests": "Resource Requests",

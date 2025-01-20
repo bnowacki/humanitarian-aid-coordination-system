@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from 'react'
 
-import { Box, Button, Heading, Spinner, Table } from '@chakra-ui/react'
+import { Box, Button, Heading, Spinner, Stack, Table } from '@chakra-ui/react'
 import { useTranslations } from 'next-intl'
 
 import AllUserRequestsDialog from '@/components/affected-event/requests-for-event'
 import { createClient } from '@/lib/supabase/client'
 
+import AddEventDialog from './add-event'
 import EditEventDialog from './edit-event'
 
 export default function EventManager() {
@@ -56,7 +57,9 @@ export default function EventManager() {
   }
 
   return (
-    <Box overflowY="auto">
+    <Stack overflowY="auto">
+      <AddEventDialog onEventAdded={fetchEvents} />
+
       <Heading>{t('table-of-events')}</Heading>
       {/* Render the AllUserRequestsDialog when selectedRequestsEventId is not null */}
       {selectedRequestsEventId && (
@@ -119,6 +122,6 @@ export default function EventManager() {
           onClose={closeEditDialog}
         />
       )}
-    </Box>
+    </Stack>
   )
 }

@@ -75,7 +75,8 @@
       "users": "Użytkownicy",
       "home": "Strona główna",
       "governments": "Rządy",
-      "aid-organizations": "Organizacje charytatywne"
+      "aid-organizations": "Organizacje charytatywne",
+      "events": "Wydarzenia"
     }
   },
   "pagination": {
@@ -96,7 +97,12 @@
     "sign-in": "Zaloguj się",
     "sign-up": "Zarejestruj się",
     "admin-panel": "Panel administratora",
-    "sign-out": "Wyloguj się"
+    "sign-out": "Wyloguj się",
+    "donations": "Dotacje",
+    "resources": "Zasoby",
+    "valunteers": "Dla Wolontariuszy",
+    "government-report": "Dla Instytucji Rządowych",
+    "maps": "Mapa"
   },
   "event": {
     "table-of-events": "Tabela Eventów",
@@ -114,23 +120,23 @@
     "delete-event": "Usuń Event",
     "edit-event": "Edytuj Event",
     "actions": "Akcje",
-    "requests":"Requesty",
+    "requests": "Requesty",
     "view-requests": "Pokaz Requesty"
   },
   "request": {
-    "create-request":"Zarequestuj pomoc",
-    "request-type":"Typ Prośby",
-    "resource":"Prośba o towar",
-    "help":"Prośba o Pomoc",
-    "name":"Nazwa",
-    "request-name":"Nazwa Prośby",
-    "description":"Opis",
-    "request-description":"Opis Prośby",
-    "quantity":"Ilość",
-    "resource-quantity":"Ilość towaru",
-    "view-requests":"Pokaz zlozone Requesty",
-    "no-requests":"Brak Requestów do wyświetlenia",
-    "requests-for-event":"Zlozone Requesty dla tego Eventu",
+    "create-request": "Zarequestuj pomoc",
+    "request-type": "Typ Prośby",
+    "resource": "Prośba o towar",
+    "help": "Prośba o Pomoc",
+    "name": "Nazwa",
+    "request-name": "Nazwa Prośby",
+    "description": "Opis",
+    "request-description": "Opis Prośby",
+    "quantity": "Ilość",
+    "resource-quantity": "Ilość towaru",
+    "view-requests": "Pokaz zlozone Requesty",
+    "no-requests": "Brak Requestów do wyświetlenia",
+    "requests-for-event": "Zlozone Requesty dla tego Eventu",
     "status": "Status",
     "help-requests": "Requesty o Pomoc",
     "resource-requests": "Requesty o towar",
@@ -172,7 +178,6 @@
     "donateItems": "Przekaż przedmioty",
     "donateNow": "Przekaż darowiznę"
   },
-
   "donationsPage": {
     "title": "Co chciałbyś/chciałabyś przekazać?",
     "donateClothes": "Przekaż ubrania",
